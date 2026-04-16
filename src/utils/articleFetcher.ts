@@ -1,5 +1,7 @@
 import axios from "axios";
 import * as cheerio from "cheerio";
+import dns from "dns/promises";
+import { URL } from "url";
 import { Article } from "../types";
 import { logger } from "./logger";
 
@@ -23,6 +25,19 @@ function shouldSkip(url: string): boolean {
   }
 }
 
+const PRIVATE_IP_RE = /^(10\.|172\.(1[6-9]|2\d|3[01])\.|192\.168\.|127\.|169\.254\.|0\.|::1|fd|fe80)/;
+
+async function isSafeUrl(urlStr: string): Promise<boolean> {
+  try {
+    const parsed = new URL(urlStr);
+    if (!["http:", "https:"].includes(parsed.protocol)) return false;
+    const addresses = await dns.resolve4(parsed.hostname);
+    return addresses.every((ip) => !PRIVATE_IP_RE.test(ip));
+  } catch {
+    return false;
+  }
+}
+
 /**
  * Fetches the full body text of an article URL using cheerio.
  * Strips nav/header/footer/ads and returns plain text up to MAX_EXCERPT chars.
@@ -30,6 +45,7 @@ function shouldSkip(url: string): boolean {
  */
 async function fetchArticleBody(url: string): Promise<string | null> {
   if (shouldSkip(url)) return null;
+  if (!(await isSafeUrl(url))) return null;
 
   try {
     const response = await axios.get(url, {
