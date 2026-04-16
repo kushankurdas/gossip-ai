@@ -1,0 +1,280 @@
+{
+  "version": 1,
+  "savedAt": "2026-04-09T19:22:56.640Z",
+  "packages": {
+    "@anthropic-ai/sdk": {
+      "resolvedVersion": "0.39.0",
+      "directDependencyNames": [
+        "@types/node",
+        "@types/node-fetch",
+        "abort-controller",
+        "agentkeepalive",
+        "form-data-encoder",
+        "formdata-node",
+        "node-fetch"
+      ],
+      "lifecycleScriptKeys": [],
+      "scriptHashes": {},
+      "missingInLockfile": false
+    },
+    "@types/cheerio": {
+      "resolvedVersion": "0.22.35",
+      "directDependencyNames": [
+        "@types/node"
+      ],
+      "lifecycleScriptKeys": [],
+      "scriptHashes": {},
+      "missingInLockfile": false
+    },
+    "@types/node": {
+      "resolvedVersion": "20.19.37",
+      "directDependencyNames": [
+        "undici-types"
+      ],
+      "lifecycleScriptKeys": [],
+      "scriptHashes": {},
+      "missingInLockfile": false
+    },
+    "@types/nodemailer": {
+      "resolvedVersion": "7.0.11",
+      "directDependencyNames": [
+        "@types/node"
+      ],
+      "lifecycleScriptKeys": [],
+      "scriptHashes": {},
+      "missingInLockfile": false
+    },
+    "@typescript-eslint/eslint-plugin": {
+      "resolvedVersion": "8.57.2",
+      "directDependencyNames": [
+        "@eslint-community/regexpp",
+        "@typescript-eslint/scope-manager",
+        "@typescript-eslint/type-utils",
+        "@typescript-eslint/utils",
+        "@typescript-eslint/visitor-keys",
+        "ignore",
+        "natural-compare",
+        "ts-api-utils"
+      ],
+      "lifecycleScriptKeys": [],
+      "scriptHashes": {},
+      "missingInLockfile": false
+    },
+    "@typescript-eslint/parser": {
+      "resolvedVersion": "8.57.2",
+      "directDependencyNames": [
+        "@typescript-eslint/scope-manager",
+        "@typescript-eslint/types",
+        "@typescript-eslint/typescript-estree",
+        "@typescript-eslint/visitor-keys",
+        "debug"
+      ],
+      "lifecycleScriptKeys": [],
+      "scriptHashes": {},
+      "missingInLockfile": false
+    },
+    "axios": {
+      "resolvedVersion": "1.15.0",
+      "directDependencyNames": [
+        "follow-redirects",
+        "form-data",
+        "proxy-from-env"
+      ],
+      "lifecycleScriptKeys": [
+        "prepare"
+      ],
+      "scriptHashes": {
+        "prepare": "99645684"
+      },
+      "missingInLockfile": false
+    },
+    "cheerio": {
+      "resolvedVersion": "1.2.0",
+      "directDependencyNames": [
+        "cheerio-select",
+        "dom-serializer",
+        "domhandler",
+        "domutils",
+        "encoding-sniffer",
+        "htmlparser2",
+        "parse5",
+        "parse5-htmlparser2-tree-adapter",
+        "parse5-parser-stream",
+        "undici",
+        "whatwg-mimetype"
+      ],
+      "lifecycleScriptKeys": [
+        "prepare",
+        "prepublishOnly"
+      ],
+      "scriptHashes": {
+        "prepare": "99645684",
+        "prepublishOnly": "1075488164"
+      },
+      "missingInLockfile": false
+    },
+    "dotenv": {
+      "resolvedVersion": "16.6.1",
+      "directDependencyNames": [],
+      "lifecycleScriptKeys": [],
+      "scriptHashes": {},
+      "missingInLockfile": false
+    },
+    "eslint": {
+      "resolvedVersion": "10.1.0",
+      "directDependencyNames": [
+        "@eslint-community/eslint-utils",
+        "@eslint-community/regexpp",
+        "@eslint/config-array",
+        "@eslint/config-helpers",
+        "@eslint/core",
+        "@eslint/plugin-kit",
+        "@humanfs/node",
+        "@humanwhocodes/module-importer",
+        "@humanwhocodes/retry",
+        "@types/estree",
+        "ajv",
+        "cross-spawn",
+        "debug",
+        "escape-string-regexp",
+        "eslint-scope",
+        "eslint-visitor-keys",
+        "espree",
+        "esquery",
+        "esutils",
+        "fast-deep-equal",
+        "file-entry-cache",
+        "find-up",
+        "glob-parent",
+        "ignore",
+        "imurmurhash",
+        "is-glob",
+        "json-stable-stringify-without-jsonify",
+        "minimatch",
+        "natural-compare",
+        "optionator"
+      ],
+      "lifecycleScriptKeys": [],
+      "scriptHashes": {},
+      "missingInLockfile": false
+    },
+    "nodemailer": {
+      "resolvedVersion": "8.0.4",
+      "directDependencyNames": [],
+      "lifecycleScriptKeys": [],
+      "scriptHashes": {},
+      "missingInLockfile": false
+    },
+    "openai": {
+      "resolvedVersion": "4.104.0",
+      "directDependencyNames": [
+        "@types/node",
+        "@types/node-fetch",
+        "abort-controller",
+        "agentkeepalive",
+        "form-data-encoder",
+        "formdata-node",
+        "node-fetch"
+      ],
+      "lifecycleScriptKeys": [],
+      "scriptHashes": {},
+      "missingInLockfile": false
+    },
+    "rss-parser": {
+      "resolvedVersion": "3.13.0",
+      "directDependencyNames": [
+        "entities",
+        "xml2js"
+      ],
+      "lifecycleScriptKeys": [],
+      "scriptHashes": {},
+      "missingInLockfile": false
+    },
+    "ts-node": {
+      "resolvedVersion": "10.9.2",
+      "directDependencyNames": [
+        "@cspotcode/source-map-support",
+        "@tsconfig/node10",
+        "@tsconfig/node12",
+        "@tsconfig/node14",
+        "@tsconfig/node16",
+        "acorn",
+        "acorn-walk",
+        "arg",
+        "create-require",
+        "diff",
+        "make-error",
+        "v8-compile-cache-lib",
+        "yn"
+      ],
+      "lifecycleScriptKeys": [
+        "prepare"
+      ],
+      "scriptHashes": {
+        "prepare": "-557624478"
+      },
+      "missingInLockfile": false
+    },
+    "typescript": {
+      "resolvedVersion": "5.9.3",
+      "directDependencyNames": [],
+      "lifecycleScriptKeys": [],
+      "scriptHashes": {},
+      "missingInLockfile": false
+    },
+    "vitest": {
+      "resolvedVersion": "3.2.4",
+      "directDependencyNames": [
+        "@types/chai",
+        "@vitest/expect",
+        "@vitest/mocker",
+        "@vitest/pretty-format",
+        "@vitest/runner",
+        "@vitest/snapshot",
+        "@vitest/spy",
+        "@vitest/utils",
+        "chai",
+        "debug",
+        "expect-type",
+        "magic-string",
+        "pathe",
+        "picomatch",
+        "std-env",
+        "tinybench",
+        "tinyexec",
+        "tinyglobby",
+        "tinypool",
+        "tinyrainbow",
+        "vite",
+        "vite-node",
+        "why-is-node-running"
+      ],
+      "lifecycleScriptKeys": [],
+      "scriptHashes": {},
+      "missingInLockfile": false
+    },
+    "winston": {
+      "resolvedVersion": "3.19.0",
+      "directDependencyNames": [
+        "@colors/colors",
+        "@dabh/diagnostics",
+        "async",
+        "is-stream",
+        "logform",
+        "one-time",
+        "readable-stream",
+        "safe-stable-stringify",
+        "stack-trace",
+        "triple-beam",
+        "winston-transport"
+      ],
+      "lifecycleScriptKeys": [
+        "prepublishOnly"
+      ],
+      "scriptHashes": {
+        "prepublishOnly": "1075488164"
+      },
+      "missingInLockfile": false
+    }
+  }
+}
