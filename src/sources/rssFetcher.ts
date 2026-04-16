@@ -18,12 +18,12 @@ const parser = new Parser({
 function toExcerpt(raw: string | undefined): string {
   if (!raw) return "";
   const text = raw
-    .replace(/<[^>]+>/g, " ")
     .replace(/&amp;/g, "&")
     .replace(/&lt;/g, "<")
     .replace(/&gt;/g, ">")
     .replace(/&quot;/g, '"')
     .replace(/&#39;/g, "'")
+    .replace(/<[^>]+>/g, " ")
     .replace(/\s+/g, " ")
     .trim();
   return text.length > 300 ? text.slice(0, 297) + "..." : text;

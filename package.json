@@ -17,11 +17,12 @@
     "dev": "ts-node src/index.ts",
     "lint": "eslint src/**/*.ts",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "secure:install": "npx --yes @kushankurdas/npm-sentinel@latest check --baseline --min-severity high && npx --yes @kushankurdas/npm-sentinel@latest sandbox && npm install"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.39.0",
-    "axios": "^1.6.0",
+    "axios": "^1.15.0",
     "cheerio": "^1.0.0",
     "dotenv": "^16.3.1",
     "nodemailer": "^8.0.4",

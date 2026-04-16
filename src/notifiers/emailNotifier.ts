@@ -1,6 +1,7 @@
 import nodemailer from "nodemailer";
 import { Article, AppConfig } from "../types";
 import { groupArticlesByTopic } from "../utils/grouper";
+import { escapeHtml } from "../utils/escapeHtml";
 import { logger } from "../utils/logger";
 
 // ─── Badge helpers ────────────────────────────────────────────────────────────
@@ -38,18 +39,19 @@ function sentimentBadge(sentiment: string | undefined): string {
 function buildArticleRow(a: Article): string {
   const badges = [categoryBadge(a.category), sentimentBadge(a.sentiment)]
     .filter(Boolean).join("");
-  const sourceLine = (a.sources ?? [a.source]).join(" · ");
+  const sourceLine = escapeHtml((a.sources ?? [a.source]).join(" · "));
+  const safeUrl = /^https?:\/\//i.test(a.url) ? escapeHtml(a.url) : "#";
 
   return `
   <tr>
     <td style="padding:16px 0;border-bottom:1px solid #e5e7eb;">
       ${badges ? `<div style="margin-bottom:6px;">${badges}</div>` : ""}
-      <a href="${a.url}"
+      <a href="${safeUrl}"
          style="font-size:16px;font-weight:600;color:#1d4ed8;text-decoration:none;line-height:1.4;">
-        ${a.title}
+        ${escapeHtml(a.title)}
       </a>
       <p style="margin:6px 0 4px;font-size:14px;color:#374151;line-height:1.5;">
-        ${a.summary ?? a.excerpt}
+        ${escapeHtml(a.summary ?? a.excerpt)}
       </p>
       <div style="font-size:12px;color:#9ca3af;">
         ${sourceLine} &nbsp;·&nbsp; ${a.publishedAt.toLocaleString()}
@@ -63,7 +65,7 @@ function buildGroupSection(topic: string, articles: Article[]): string {
   <tr>
     <td style="padding:24px 0 8px;">
       <h2 style="margin:0;font-size:18px;color:#111827;border-left:4px solid #2563eb;padding-left:12px;">
-        ${topic}
+        ${escapeHtml(topic)}
         <span style="font-size:13px;font-weight:400;color:#6b7280;margin-left:8px;">
           ${articles.length} ${articles.length === 1 ? "article" : "articles"}
         </span>

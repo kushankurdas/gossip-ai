@@ -68,6 +68,14 @@ function escapeSlack(text: string): string {
     .replace(/>/g, "&gt;");
 }
 
+function escapeSlackUrl(url: string): string {
+  return url
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/\|/g, "%7C");
+}
+
 // ─── HTTP helpers ─────────────────────────────────────────────────────────────
 
 /** Incoming webhook — no threading support */
@@ -184,8 +192,8 @@ function buildArticleBlocks(articles: Article[]): object[] {
     const emoji   = sentimentEmoji(a.sentiment);
     const prefix  = [emoji, label].filter(Boolean).join("  ");
     const titleLine = prefix
-      ? `${prefix}  *<${a.url}|${escapeSlack(a.title)}>*`
-      : `*<${a.url}|${escapeSlack(a.title)}>*`;
+      ? `${prefix}  *<${escapeSlackUrl(a.url)}|${escapeSlack(a.title)}>*`
+      : `*<${escapeSlackUrl(a.url)}|${escapeSlack(a.title)}>*`;
 
     blocks.push(
       {

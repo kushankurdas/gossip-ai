@@ -1,0 +1,10 @@
+{
+  "dnsAllowlist": {
+    "mode": "replace",
+    "suffixes": ["npmjs.org"],
+    "exactHosts": []
+  },
+  "sandbox": {
+    "mountSsh": true
+  }
+}
