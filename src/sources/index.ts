@@ -2,6 +2,7 @@ import { Article, AppConfig } from "../types";
 import { fetchRssFeed } from "./rssFetcher";
 import { fetchRedditJSON } from "./redditFetcher";
 import { fetchDailyDev } from "./dailyDevScraper";
+import { fetchSitemap } from "./sitemapFetcher";
 import { logger } from "../utils/logger";
 
 export async function fetchAllSources(config: AppConfig): Promise<Article[]> {
@@ -15,6 +16,9 @@ export async function fetchAllSources(config: AppConfig): Promise<Article[]> {
       }
       if (source.type === "scrape" && source.name === "daily.dev") {
         return fetchDailyDev(source);
+      }
+      if (source.type === "sitemap") {
+        return fetchSitemap(source);
       }
       if (source.type === "rss") {
         return fetchRssFeed(source);

@@ -124,6 +124,217 @@ export function loadConfig(): AppConfig {
         url: "https://tldr.tech/api/rss/tech",
         enabled: optionalEnv("SOURCE_TLDR_ENABLED", "true") === "true",
       },
+
+      // ── Security & Cybersecurity ────────────────────────────────
+      {
+        name: "Krebs on Security",
+        type: "rss",
+        url: "https://krebsonsecurity.com/feed/",
+        enabled: optionalEnv("SOURCE_KREBS_ENABLED", "true") === "true",
+      },
+      {
+        name: "BleepingComputer",
+        type: "rss",
+        url: "https://www.bleepingcomputer.com/feed/",
+        enabled: optionalEnv("SOURCE_BLEEPING_ENABLED", "true") === "true",
+      },
+      {
+        name: "Schneier on Security",
+        type: "rss",
+        url: "https://www.schneier.com/feed/atom/",
+        enabled: optionalEnv("SOURCE_SCHNEIER_ENABLED", "true") === "true",
+      },
+      {
+        name: "The Hacker News",
+        type: "rss",
+        url: "https://feeds.feedburner.com/TheHackersNews",
+        enabled: optionalEnv("SOURCE_THN_ENABLED", "true") === "true",
+      },
+      {
+        name: "Dark Reading",
+        type: "rss",
+        url: "https://www.darkreading.com/rss.xml",
+        enabled: optionalEnv("SOURCE_DARKREADING_ENABLED", "true") === "true",
+      },
+      {
+        name: "SecurityWeek",
+        type: "rss",
+        url: "https://feeds.feedburner.com/Securityweek",
+        enabled: optionalEnv("SOURCE_SECWEEK_ENABLED", "false") === "true",
+      },
+      {
+        name: "The Register — Security",
+        type: "rss",
+        url: "https://www.theregister.com/security/headlines.atom",
+        enabled: optionalEnv("SOURCE_REG_SEC_ENABLED", "true") === "true",
+      },
+      {
+        name: "CISA Advisories",
+        type: "rss",
+        url: "https://www.cisa.gov/cybersecurity-advisories/all.xml",
+        enabled: optionalEnv("SOURCE_CISA_ENABLED", "true") === "true",
+      },
+      {
+        name: "Google Project Zero",
+        type: "rss",
+        url: "https://googleprojectzero.blogspot.com/feeds/posts/default",
+        enabled: optionalEnv("SOURCE_PROJECTZERO_ENABLED", "true") === "true",
+      },
+      {
+        name: "SANS ISC Diary",
+        type: "rss",
+        url: "https://isc.sans.edu/rssfeed_full.xml",
+        enabled: optionalEnv("SOURCE_SANS_ENABLED", "true") === "true",
+      },
+      {
+        name: "Microsoft MSRC Blog",
+        type: "rss",
+        url: "https://msrc.microsoft.com/blog/feed/",
+        enabled: optionalEnv("SOURCE_MSRC_ENABLED", "true") === "true",
+      },
+      {
+        name: "GitHub Security Advisories",
+        type: "rss",
+        url: "https://github.com/advisories.atom",
+        enabled: optionalEnv("SOURCE_GHSA_ENABLED", "true") === "true",
+      },
+      {
+        name: "PortSwigger Research",
+        type: "rss",
+        url: "https://portswigger.net/research/rss",
+        enabled: optionalEnv("SOURCE_PORTSWIGGER_ENABLED", "true") === "true",
+      },
+      {
+        name: "Reddit r/netsec",
+        type: "reddit",
+        url: "https://www.reddit.com/r/netsec",
+        enabled: optionalEnv("SOURCE_REDDIT_NETSEC_ENABLED", "true") === "true",
+      },
+      {
+        name: "Reddit r/cybersecurity",
+        type: "reddit",
+        url: "https://www.reddit.com/r/cybersecurity",
+        enabled: optionalEnv("SOURCE_REDDIT_CYBERSEC_ENABLED", "false") === "true",
+      },
+      {
+        name: "Reddit r/blueteamsec",
+        type: "reddit",
+        url: "https://www.reddit.com/r/blueteamsec",
+        enabled: optionalEnv("SOURCE_REDDIT_BLUETEAM_ENABLED", "false") === "true",
+      },
+
+      // ── Long-tail / below-headlines ────────────────────────────
+      {
+        name: "Lobsters",
+        type: "rss",
+        url: "https://lobste.rs/rss",
+        enabled: optionalEnv("SOURCE_LOBSTERS_ENABLED", "true") === "true",
+      },
+      {
+        // Unofficial third-party RSS proxy for github.com/trending. No SLA.
+        name: "GitHub Trending (daily)",
+        type: "rss",
+        url: "https://mshibanami.github.io/GitHubTrendingRSS/daily/all.xml",
+        enabled: optionalEnv("SOURCE_GH_TRENDING_ENABLED", "true") === "true",
+      },
+      {
+        name: "Medium — programming tag",
+        type: "rss",
+        url: "https://medium.com/feed/tag/programming",
+        enabled: optionalEnv("SOURCE_MEDIUM_PROG_ENABLED", "false") === "true",
+      },
+      {
+        name: "Medium — cybersecurity tag",
+        type: "rss",
+        url: "https://medium.com/feed/tag/cybersecurity",
+        enabled: optionalEnv("SOURCE_MEDIUM_SEC_ENABLED", "false") === "true",
+      },
+
+      // ── Substack / curated newsletters ──────────────────────────
+      {
+        name: "Stratechery (Ben Thompson)",
+        type: "rss",
+        url: "https://stratechery.com/feed/",
+        enabled: optionalEnv("SOURCE_STRATECHERY_ENABLED", "false") === "true",
+      },
+      {
+        name: "Platformer (Casey Newton)",
+        type: "rss",
+        url: "https://www.platformer.news/feed",
+        enabled: optionalEnv("SOURCE_PLATFORMER_ENABLED", "false") === "true",
+      },
+      {
+        name: "Risky Business News",
+        type: "rss",
+        url: "https://news.risky.biz/feed/",
+        enabled: optionalEnv("SOURCE_RISKYBIZ_ENABLED", "true") === "true",
+      },
+      {
+        name: "tl;dr sec (Clint Gibler)",
+        type: "rss",
+        url: "https://tldrsec.com/feed.xml",
+        enabled: optionalEnv("SOURCE_TLDRSEC_ENABLED", "true") === "true",
+      },
+      {
+        name: "Last Week in AWS (Corey Quinn)",
+        type: "rss",
+        url: "https://www.lastweekinaws.com/feed/",
+        enabled: optionalEnv("SOURCE_LWIA_ENABLED", "false") === "true",
+      },
+
+      // ── Social (Bluesky / Mastodon) — uncomment and fill in handles ──
+      // Bluesky per-account RSS: https://bsky.app/profile/<handle>.bsky.social/rss
+      // Mastodon per-account RSS: https://<instance>/@<user>.rss
+      // {
+      //   name: "Bluesky — <handle>",
+      //   type: "rss",
+      //   url: "https://bsky.app/profile/<handle>.bsky.social/rss",
+      //   enabled: optionalEnv("SOURCE_BSKY_EXAMPLE_ENABLED", "true") === "true",
+      // },
+      // {
+      //   name: "Mastodon — @<user>@infosec.exchange",
+      //   type: "rss",
+      //   url: "https://infosec.exchange/@<user>.rss",
+      //   enabled: optionalEnv("SOURCE_MASTO_EXAMPLE_ENABLED", "true") === "true",
+      // },
+
+      // ── Competitor monitoring — fill in your list ──
+      // Three patterns covering ~all blogs:
+      //
+      //   A) Has RSS (WordPress, Ghost, Substack, Hashnode, most CMS):
+      //      Find feed via:  curl -sL <blog-url> | grep -i 'rel=.alternate.*rss'
+      //      type: "rss", url: "https://<host>/feed/" (or /rss, /atom.xml)
+      //
+      //   B) No RSS but has sitemap.xml (Webflow, Framer, Next.js, custom):
+      //      type: "sitemap", url: "https://<host>/sitemap.xml"
+      //      urlPattern: regex to keep only post URLs, e.g. "/post/" or "/blog/"
+      //      maxItemsPerCycle: cap (default 30) — first run else fetches every recent post
+      //
+      //   C) GitHub releases for any public repo (free atom feed, no auth):
+      //      type: "rss", url: "https://github.com/<owner>/<repo>/releases.atom"
+      //
+      // Live examples (uncomment and tweak):
+      //
+      // {
+      //   name: "Sprinto — Blog",                          // pattern A: WordPress
+      //   type: "rss",
+      //   url: "https://sprinto.com/feed/",
+      //   enabled: optionalEnv("SOURCE_COMP_SPRINTO_ENABLED", "true") === "true",
+      // },
+      // {
+      //   name: "Scrut — Blog",                            // pattern B: Webflow, no RSS
+      //   type: "sitemap",
+      //   url: "https://www.scrut.io/sitemap.xml",
+      //   urlPattern: "/post/",
+      //   maxItemsPerCycle: 30,
+      //   enabled: optionalEnv("SOURCE_COMP_SCRUT_ENABLED", "true") === "true",
+      // },
+      // {
+      //   name: "Vanta — GitHub Releases",                 // pattern C: any public repo
+      //   type: "rss",
+      //   url: "https://github.com/vantatech/vanta/releases.atom",
+      //   enabled: optionalEnv("SOURCE_COMP_VANTA_GH_ENABLED", "true") === "true",
+      // },
     ],
 
     notifiers: {

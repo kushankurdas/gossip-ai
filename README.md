@@ -8,6 +8,9 @@ AI-curated tech news: a Dockerized Node.js/TypeScript service that polls popular
 
 | Source | Method | Toggle |
 |---|---|---|
+**General tech**
+| Source | Method | Toggle |
+|---|---|---|
 | Hacker News | RSS | `SOURCE_HN_ENABLED` |
 | Reddit r/programming | Reddit API | `SOURCE_REDDIT_PROGRAMMING_ENABLED` |
 | Reddit r/webdev | Reddit API | `SOURCE_REDDIT_WEBDEV_ENABLED` |
@@ -23,7 +26,65 @@ AI-curated tech news: a Dockerized Node.js/TypeScript service that polls popular
 | InfoQ | RSS | `SOURCE_INFOQ_ENABLED` |
 | TLDR Tech | RSS | `SOURCE_TLDR_ENABLED` |
 
-Adding more sources is a one-liner in `src/config.ts`.
+**Security & cybersecurity**
+| Source | Method | Toggle |
+|---|---|---|
+| Krebs on Security | RSS | `SOURCE_KREBS_ENABLED` |
+| BleepingComputer | RSS | `SOURCE_BLEEPING_ENABLED` |
+| Schneier on Security | RSS | `SOURCE_SCHNEIER_ENABLED` |
+| The Hacker News | RSS | `SOURCE_THN_ENABLED` |
+| Dark Reading | RSS | `SOURCE_DARKREADING_ENABLED` |
+| SecurityWeek | RSS | `SOURCE_SECWEEK_ENABLED` |
+| The Register — Security | RSS | `SOURCE_REG_SEC_ENABLED` |
+| CISA Advisories | RSS | `SOURCE_CISA_ENABLED` |
+| Google Project Zero | RSS | `SOURCE_PROJECTZERO_ENABLED` |
+| SANS ISC Diary | RSS | `SOURCE_SANS_ENABLED` |
+| Microsoft MSRC Blog | RSS | `SOURCE_MSRC_ENABLED` |
+| GitHub Security Advisories | RSS | `SOURCE_GHSA_ENABLED` |
+| PortSwigger Research | RSS | `SOURCE_PORTSWIGGER_ENABLED` |
+| Reddit r/netsec | Reddit API | `SOURCE_REDDIT_NETSEC_ENABLED` |
+| Reddit r/cybersecurity | Reddit API | `SOURCE_REDDIT_CYBERSEC_ENABLED` |
+| Reddit r/blueteamsec | Reddit API | `SOURCE_REDDIT_BLUETEAM_ENABLED` |
+
+**Long-tail / below-headlines**
+| Source | Method | Toggle |
+|---|---|---|
+| Lobsters | RSS | `SOURCE_LOBSTERS_ENABLED` |
+| GitHub Trending (daily) | RSS (third-party) | `SOURCE_GH_TRENDING_ENABLED` |
+| Medium — programming tag | RSS | `SOURCE_MEDIUM_PROG_ENABLED` |
+| Medium — cybersecurity tag | RSS | `SOURCE_MEDIUM_SEC_ENABLED` |
+
+**Substack / curated newsletters**
+| Source | Method | Toggle |
+|---|---|---|
+| Stratechery | RSS | `SOURCE_STRATECHERY_ENABLED` |
+| Platformer | RSS | `SOURCE_PLATFORMER_ENABLED` |
+| Risky Business News | RSS | `SOURCE_RISKYBIZ_ENABLED` |
+| tl;dr sec | RSS | `SOURCE_TLDRSEC_ENABLED` |
+| Last Week in AWS | RSS | `SOURCE_LWIA_ENABLED` |
+
+**Social (Bluesky / Mastodon) & competitor monitoring**
+Both are commented-out template blocks at the bottom of `src/config.ts`. Uncomment and fill in handles / competitor URLs as needed:
+- Bluesky per-account RSS: `https://bsky.app/profile/<handle>/rss`
+- Mastodon per-account RSS: `https://<instance>/@<user>.rss`
+- GitHub releases: `https://github.com/<owner>/<repo>/releases.atom`
+- Substack: `https://<name>.substack.com/feed`
+
+**Competitor blogs without RSS** (Webflow / Framer / custom JAMstack)
+Use `type: "sitemap"` — the fetcher reads `sitemap.xml`, filters URLs by `urlPattern`, and scrapes each new page for title/excerpt/published date. Already-seen URLs are skipped before the per-page fetch (no wasted HTTP). Example:
+
+```ts
+{
+  name: "Scrut — Blog",
+  type: "sitemap",
+  url: "https://www.scrut.io/sitemap.xml",
+  urlPattern: "/post/",        // only follow URLs matching this regex
+  maxItemsPerCycle: 30,        // first-run cap; default 30
+  enabled: true,
+},
+```
+
+Supported source types: `rss`, `reddit`, `scrape` (daily.dev), `sitemap`. Adding more sources is a one-liner in `src/config.ts`.
 
 ## Features
 
@@ -390,18 +451,43 @@ All config is via environment variables (see `.env.example`).
 |---|---|---|
 | `SOURCE_HN_ENABLED` | `true` | Hacker News |
 | `SOURCE_REDDIT_PROGRAMMING_ENABLED` | `true` | Reddit r/programming |
-| `SOURCE_REDDIT_WEBDEV_ENABLED` | `true` | Reddit r/webdev |
-| `SOURCE_REDDIT_JS_ENABLED` | `true` | Reddit r/javascript |
+| `SOURCE_REDDIT_WEBDEV_ENABLED` | `false` | Reddit r/webdev |
+| `SOURCE_REDDIT_JS_ENABLED` | `false` | Reddit r/javascript |
 | `SOURCE_DAILYDEV_ENABLED` | `true` | daily.dev |
 | `SOURCE_DEVTO_ENABLED` | `false` | Dev.to |
 | `SOURCE_IEEE_ENABLED` | `true` | IEEE Spectrum |
 | `SOURCE_AWS_ENABLED` | `true` | AWS What's New |
 | `SOURCE_TECHMEME_ENABLED` | `true` | Techmeme |
 | `SOURCE_TECHCRUNCH_ENABLED` | `true` | TechCrunch |
-| `SOURCE_WIRED_ENABLED` | `true` | Wired |
-| `SOURCE_ENGADGET_ENABLED` | `true` | Engadget |
+| `SOURCE_WIRED_ENABLED` | `false` | Wired |
+| `SOURCE_ENGADGET_ENABLED` | `false` | Engadget |
 | `SOURCE_INFOQ_ENABLED` | `true` | InfoQ |
 | `SOURCE_TLDR_ENABLED` | `true` | TLDR Tech |
+| `SOURCE_KREBS_ENABLED` | `true` | Krebs on Security |
+| `SOURCE_BLEEPING_ENABLED` | `true` | BleepingComputer |
+| `SOURCE_SCHNEIER_ENABLED` | `true` | Schneier on Security |
+| `SOURCE_THN_ENABLED` | `true` | The Hacker News |
+| `SOURCE_DARKREADING_ENABLED` | `true` | Dark Reading |
+| `SOURCE_SECWEEK_ENABLED` | `false` | SecurityWeek |
+| `SOURCE_REG_SEC_ENABLED` | `true` | The Register — Security |
+| `SOURCE_CISA_ENABLED` | `true` | CISA Advisories |
+| `SOURCE_PROJECTZERO_ENABLED` | `true` | Google Project Zero |
+| `SOURCE_SANS_ENABLED` | `true` | SANS Internet Storm Center diary |
+| `SOURCE_MSRC_ENABLED` | `true` | Microsoft Security Response Center blog |
+| `SOURCE_GHSA_ENABLED` | `true` | GitHub Security Advisories |
+| `SOURCE_PORTSWIGGER_ENABLED` | `true` | PortSwigger Research |
+| `SOURCE_REDDIT_NETSEC_ENABLED` | `true` | Reddit r/netsec |
+| `SOURCE_REDDIT_CYBERSEC_ENABLED` | `false` | Reddit r/cybersecurity |
+| `SOURCE_REDDIT_BLUETEAM_ENABLED` | `false` | Reddit r/blueteamsec |
+| `SOURCE_LOBSTERS_ENABLED` | `true` | Lobsters |
+| `SOURCE_GH_TRENDING_ENABLED` | `true` | GitHub Trending (third-party RSS proxy) |
+| `SOURCE_MEDIUM_PROG_ENABLED` | `false` | Medium — programming tag |
+| `SOURCE_MEDIUM_SEC_ENABLED` | `false` | Medium — cybersecurity tag |
+| `SOURCE_STRATECHERY_ENABLED` | `false` | Stratechery (Ben Thompson) |
+| `SOURCE_PLATFORMER_ENABLED` | `false` | Platformer (Casey Newton) |
+| `SOURCE_RISKYBIZ_ENABLED` | `true` | Risky Business News |
+| `SOURCE_TLDRSEC_ENABLED` | `true` | tl;dr sec (Clint Gibler) |
+| `SOURCE_LWIA_ENABLED` | `false` | Last Week in AWS (Corey Quinn) |
 
 ### Misc
 

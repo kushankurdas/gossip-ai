@@ -27,9 +27,13 @@ export interface Article {
 
 export interface SourceConfig {
   name: string;
-  type: "rss" | "reddit" | "scrape";
+  type: "rss" | "reddit" | "scrape" | "sitemap";
   url: string;
   enabled: boolean;
+  /** type="sitemap" only: regex string — only sitemap URLs matching this are followed. */
+  urlPattern?: string;
+  /** type="sitemap" only: cap of pages to fetch per cycle (defaults to 30). */
+  maxItemsPerCycle?: number;
 }
 
 // ─── Cycle stats (written to data/stats.json) ─────────────────────────────────
